@@ -40,60 +40,8 @@ def home():
     return render_template('index.html',labels=labels[:6],data=data[:6])
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
-    #headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.3; Win 64 ; x64) Apple WeKit /537.36(KHTML , like Gecko) Chrome/80.0.3987.162 Safari/537.36'}
-    #textContent = requests.get("https://github.com/002ayush",headers=headers).text
-    # webScraping(textContent)
-    app.run(debug=True)
-   # print(textContent)
+    
+    app.run()
+
     
