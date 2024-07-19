@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <div style="width: 30%; margin: auto;">
+        <canvas id="myPieChart"></canvas>
+    </div>
+    
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+    <!-- Your custom script -->
+    <script>
+        // Wait until the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Get the context of the canvas element
+            var ctx = document.getElementById('myPieChart').getContext('2d');
+
+            // Create the pie chart
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: {{ labels | tojson }},
+                    datasets: [{
+                       
+                        data: {{ data | tojson }},
+                        backgroundColor: [
+                            '#004466',
+                            'green',
+                            '#806000d',
+                            'pink',
+                            '#b30000',
+                            '#660033'
+                        ],
+                        borderColor: [
+                            '#004466',
+                            'green',
+                            '#806000',
+                            'pink',
+                            '#b30000',
+                            '#660033'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        datalabels: {
+                            color: 'white',
+                            formatter: (value, ctx) => {
+                                return ctx.chart.data.labels[ctx.dataIndex];
+                            },
+                            font: {
+                                weight: 'bold',
+                                size: 8
+                            }
+                        },
+                        legend: {
+                            position: 'left',
+                        },
+                        
+                    }
+                },
+                plugins: [ChartDataLabels]
+            });
+        });
+    </script>
+</body>
+</html>
